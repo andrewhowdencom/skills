@@ -2,6 +2,8 @@
 
 This document provides conditional instructions for agents. Based on the task at hand, please refer to the relevant documentation in the `/docs/development/` directory.
 
+Please be sure to plan so you consume files at the time they're relevant to complete the task (e.g. git just before interacting with the git tool)
+
 ## Conditional Instructions
 
 *   **If your task involves making architectural decisions...**
