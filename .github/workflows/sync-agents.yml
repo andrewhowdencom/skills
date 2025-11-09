@@ -6,6 +6,7 @@ on:
       - main # Or your default branch
     paths:
       - 'AGENTS.md' # Only run when this file changes
+      - 'docs/*'
 
 jobs:
   sync:
