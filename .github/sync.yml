@@ -1,7 +1,7 @@
 andrewhowdencom/interviewer:
   - AGENTS.md
-  - docs/development/**
+  - docs/development
 
 andrewhowdencom/announce:
   - AGENTS.md
-  - docs/development/**
+  - docs/development
