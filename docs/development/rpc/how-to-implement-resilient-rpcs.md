@@ -1,10 +1,20 @@
 # How to Implement Resilient RPCs
 
-This guide provides step-by-step instructions on implementing timeouts and retries with exponential backoff and jitter in Go to make your RPCs more resilient to transient failures.
+This guide provides step-by-step instructions on implementing timeouts and retries with exponential backoff and jitter in Go to make your RPCs more resilient to transient failures. These principles apply to various RPC technologies, including gRPC and RESTful APIs.
 
 ## Timeouts and Deadlines
 
-The most critical step towards resilience is to set a deadline on every outgoing request. In Go, this is achieved using the `context` package. By creating a `context` with a timeout, you tell the gRPC client to abandon the request if a response is not received within the specified duration.
+The most critical step towards resilience is to set a deadline on every outgoing request. This prevents your service from blocking indefinitely and causing cascading failures. In Go, this is typically achieved using the `context` package.
+
+## Retries with Exponential Backoff and Jitter
+
+Many failures are transient. In these cases, retrying the request after a short delay is often successful. However, retrying immediately can make a bad situation worse. The best practice is to implement retries with exponential backoff and add jitter (randomness) to the backoff duration to avoid thundering herd problems.
+
+## gRPC
+
+### Timeouts
+
+In Go, you can use the `context` package to set a timeout on a gRPC request.
 
 ```go
 package main
@@ -40,13 +50,9 @@ func main() {
 }
 ```
 
-## Retries with Exponential Backoff and Jitter
+### Retries
 
-Many failures are transient. In these cases, retrying the request after a short delay is often successful. However, retrying immediately can make a bad situation worse.
-
-The best practice is to implement retries with exponential backoff. This means the client waits for a progressively longer duration between each failed attempt. Adding jitter (randomness) to the backoff duration can help to avoid thundering herd problems.
-
-While you can write a custom interceptor, a robust, production-ready implementation is provided by libraries like `grpc_retry` from `go-grpc-middleware`. This allows you to easily configure retry policies for specific gRPC status codes and set a maximum number of attempts.
+While you can write a custom interceptor, a robust, production-ready implementation is provided by libraries like `grpc_retry` from `go-grpc-middleware`.
 
 Here's an example of how to use `grpc_retry` with an exponential backoff policy:
 
@@ -73,6 +79,55 @@ func main() {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
+
+	// ...
+}
+```
+
+## RESTful APIs
+
+### Timeouts
+
+For RESTful APIs, you can set a timeout on the `http.Client`.
+
+```go
+package main
+
+import (
+	"net/http"
+	"time"
+)
+
+func main() {
+	client := &http.Client{
+		Timeout: 30 * time.Second,
+	}
+
+	// ...
+}
+```
+
+### Retries
+
+The `go-retryablehttp` library provides a simple way to add retries to your HTTP clients.
+
+Here's an example of how to use `go-retryablehttp`:
+
+```go
+import (
+	"log"
+
+	"github.com/hashicorp/go-retryablehttp"
+)
+
+func main() {
+	client := retryablehttp.NewClient()
+	client.RetryMax = 10
+
+	resp, err := client.Get("https://example.com")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// ...
 }
