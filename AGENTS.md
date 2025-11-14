@@ -23,6 +23,9 @@ Please be sure to plan so you consume files at the time they're relevant to comp
     *   ...and it's about writing commit messages, read [How to Write Commit Messages](./docs/development/git/how-to-write-commit-messages.md).
 *   **If your task involves running common development tasks...**
     *   ...read [How to Use Taskfile](./docs/development/task-runner/how-to-use-taskfile.md).
+*   **If your task involves RPCs...**
+    *   ...and it's about implementing resilient RPCs, read [How to Implement Resilient RPCs](./docs/development/rpc/how-to-implement-resilient-rpcs.md).
+    *   ...and it's about default timeouts, read [Reference: Default Timeouts for RPCs](./docs/development/rpc/reference-default-timeouts.md).
 *   **If your task involves writing code in a specific language...**
     *   ...and it's Go, read [How to Write Go Code](./docs/development/languages/how-to-write-go-code.md).
     *   ...and it's Markdown, read [How to Write Markdown](./docs/development/languages/how-to-write-markdown.md).
