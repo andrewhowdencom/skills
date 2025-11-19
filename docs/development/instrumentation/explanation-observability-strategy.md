@@ -10,8 +10,17 @@ We prioritize **distributed tracing** as our primary mechanism for understanding
 
 *   **Traces** tell the story of a single request.
 *   **Metrics** provide aggregated views of system health.
+*   **Logs** provide point-in-time details for debugging or lifecycle events.
 
-We use traces to debug specific issues and understand flow, while metrics are used for high-level health monitoring (e.g., error rates, latency distributions).
+We use traces to debug specific issues and understand flow, while metrics are used for high-level health monitoring.
+
+### The Role of Logs
+
+Logs are **NOT** for tracking user activity (access logs) or high-volume events; that is the domain of distributed tracing.
+
+Logs are primarily used for:
+1.  **Debugging**: Detailed information (at `DEBUG` level) to help developers understand internal state during development or troubleshooting.
+2.  **Lifecycle Events**: High-level application events (e.g., startup, shutdown, configuration reload on `SIGHUP`).
 
 ## Naming Philosophy
 

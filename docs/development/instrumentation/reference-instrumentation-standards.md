@@ -24,3 +24,11 @@ This document outlines the mandatory standards for instrumentation in this repos
 ## 5. Reporting Configuration
 *   **Frequency:** Metrics MUST be reported at a 60-second frequency by default.
 *   **Batching:** Data MUST be batched before transport to reduce network overhead.
+
+## 6. Logging
+*   **Library:** `log/slog` MUST be used for all logging. The default handler MUST be `TextHandler`.
+*   **Configuration:** The application MUST expose a `--log-level` CLI flag to allow the user to configure the log level (e.g., `debug`, `info`, `warn`, `error`).
+*   **Usage:**
+    *   **Debug:** Use for detailed information useful during development or debugging.
+    *   **Lifecycle:** Use for high-level application events (startup, shutdown, signal handling).
+    *   **Forbidden:** Do NOT use logs for access logs or tracking high-volume events (use Tracing).

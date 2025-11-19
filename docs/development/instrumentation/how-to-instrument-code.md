@@ -56,3 +56,31 @@ span.SetAttributes(
     semconv.HTTPRouteKey.String("/users/{id}"),
 )
 ```
+
+## How to Log
+
+Use `log/slog` for logging.
+
+### Initialization
+
+Initialize the logger with a handler (e.g., Text) and set it as default.
+
+```go
+import "log/slog"
+
+// ...
+
+logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+slog.SetDefault(logger)
+```
+
+### Logging Events
+
+```go
+// Debugging (Development only)
+slog.Debug("processing order", "order_id", orderID)
+
+// Lifecycle Events (Startup/Shutdown)
+slog.Info("starting application", "version", version)
+slog.Info("shutting down application", "signal", sig)
+```
