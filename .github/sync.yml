@@ -5,3 +5,7 @@ andrewhowdencom/interviewer:
 andrewhowdencom/announce:
   - AGENTS.md
   - docs/development
+
+andrewhowdencom/ruf:
+  - AGENTS.md
+  - docs/development
