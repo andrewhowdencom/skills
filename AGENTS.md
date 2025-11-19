@@ -37,3 +37,7 @@ Please be sure to plan so you consume files at the time they're relevant to comp
     *   ...read [How to Find Required Tools](./docs/development/tools/how-to-find-required-tools.md).
 *   **If your task involves updating documentation...**
     *   ...read [How to Keep Documentation Up-to-Date](./docs/development/documentation/how-to-keep-documentation-up-to-date.md).
+*   **If your task involves instrumentation...**
+    *   ...and it's about the strategy, read [Explanation: Observability Strategy](./docs/development/instrumentation/explanation-observability-strategy.md).
+    *   ...and it's about specific standards, read [Reference: Instrumentation Standards](./docs/development/instrumentation/reference-instrumentation-standards.md).
+    *   ...and it's about how to instrument code, read [How to Instrument Code](./docs/development/instrumentation/how-to-instrument-code.md).
