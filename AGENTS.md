@@ -24,6 +24,7 @@ Please be sure to plan so you consume files at the time they're relevant to comp
 *   **If your task involves running common development tasks...**
     *   ...read [How to Use Taskfile](./docs/development/task-runner/how-to-use-taskfile.md).
 *   **If your task involves RPCs...**
+    *   ...and it's about designing RPC interfaces, read [How to Design RPC Interfaces](./docs/development/rpc/how-to-design-rpc-interfaces.md).
     *   ...and it's about implementing resilient RPCs, read [How to Implement Resilient RPCs](./docs/development/rpc/how-to-implement-resilient-rpcs.md).
     *   ...and it's about default timeouts, read [Reference: Default Timeouts for RPCs](./docs/development/rpc/reference-default-timeouts.md).
 *   **If your task involves writing code in a specific language...**
