@@ -9,6 +9,9 @@ This document outlines the mandatory standards for instrumentation in this repos
 ## 2. Naming Conventions
 *   **Span Names:** MUST be named after the *business operation* (e.g., `checkout`, `update-inventory`).
     *   **Forbidden:** Do NOT name spans after transport details (e.g., `POST /api/checkout`, `grpc.Health/Check`).
+*   **Metric Names:** MUST use the OpenTelemetry naming style (e.g., `foo.bar`).
+    *   **Forbidden:** Do NOT use the Prometheus naming style (e.g., `<app>_foo_bar_total`).
+    *   **Context:** Rely on attributes and the metric type to provide context.
 
 ## 3. Semantic Conventions
 *   **Attributes:** All attributes (tags) on spans and metrics MUST follow [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/).
