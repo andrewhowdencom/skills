@@ -35,27 +35,42 @@ Zipkin, Honeycomb).
 
 ### Implementation
 
-1.  **Extract Context:** On the server side, extract the parent trace context from the incoming request (usually handled
+1.  **Dependency Injection:** The server should hold a reference to a `trace.Tracer`. This tracer should be initialized
+    with the name of the package (e.g., `github.com/org/repo/pkg/service`).
+2.  **Extract Context:** On the server side, extract the parent trace context from the incoming request (usually handled
     by middleware/interceptors, but ensure it's propagated to the function).
-2.  **Start Span:** Start a new span for the RPC execution using the `context.Context`.
-3.  **End Span:** Ensure the span is ended when the RPC completes (usually using `defer`).
+3.  **Start Span:** Start a new span for the RPC execution using the injected tracer.
+4.  **End Span:** Ensure the span is ended when the RPC completes (usually using `defer`).
 
 ### Example (Go with OpenTelemetry)
 
 ```go
-import "go.opentelemetry.io/otel"
+import (
+    "context"
+    "go.opentelemetry.io/otel/trace"
+    pb "path/to/proto"
+)
+
+type Server struct {
+    tracer trace.Tracer
+    // ... other dependencies
+}
+
+func NewServer(tp trace.TracerProvider) *Server {
+    return &Server{
+        // Name the tracer after the library/package
+        tracer: tp.Tracer("github.com/your-org/your-app/pkg/your-service"),
+    }
+}
 
 func (s *Server) GetUser(ctx context.Context, req *pb.GetUserRequest) (*pb.GetUserResponse, error) {
-    // Use the global tracer provider or a specific one
-    tracer := otel.Tracer("my-service")
-
-    // Start a new span.
+    // Start a new span using the injected tracer.
     // Ideally, the parent context is already extracted by middleware and passed in 'ctx'.
-    ctx, span := tracer.Start(ctx, "GetUser")
+    ctx, span := s.tracer.Start(ctx, "GetUser")
     defer span.End()
 
     // ... business logic ...
 
-    return response, nil
+    return &pb.GetUserResponse{}, nil
 }
 ```
