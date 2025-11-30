@@ -66,7 +66,7 @@ import (
 )
 
 func (c *Client) CallRPC(ctx context.Context) error {
-	tracer := otel.Tracer("my-package")
+	tracer := otel.Tracer("github.com/org/repo/pkg/service")
 
 	// Use semconv constants for attributes
 	ctx, span := tracer.Start(ctx, "my.rpc.Method",
@@ -92,7 +92,7 @@ Server-side gRPC instrumentation typically uses an interceptor, but if manual in
 func (s *Server) MyMethod(ctx context.Context, req *pb.Request) (*pb.Response, error) {
     // 1. Extract propagation context (optional, often handled by interceptors)
     // 2. Start span with SpanKindServer
-    tracer := otel.Tracer("my-package")
+    tracer := otel.Tracer("github.com/org/repo/pkg/service")
     ctx, span := tracer.Start(ctx, "my.rpc.Method",
         trace.WithSpanKind(trace.SpanKindServer),
         trace.WithAttributes(
@@ -124,7 +124,7 @@ import (
 )
 
 func (c *Client) CallHTTP(req *http.Request) error {
-	tracer := otel.Tracer("my-package")
+	tracer := otel.Tracer("github.com/org/repo/pkg/service")
 
 	// Use httpconv to extract standard attributes like http.method, http.url, etc.
 	attrs := httpconv.ClientRequest(req)
@@ -152,7 +152,7 @@ import (
 )
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-    tracer := otel.Tracer("my-package")
+    tracer := otel.Tracer("github.com/org/repo/pkg/service")
 
     // 1. Extract context for distributed tracing propagation
     ctx := otel.GetTextMapPropagator().Extract(r.Context(), propagation.HeaderCarrier(r.Header))

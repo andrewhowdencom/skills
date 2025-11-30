@@ -12,6 +12,7 @@ This document outlines the mandatory standards for instrumentation in this repos
 *   **Metric Names:** MUST use the OpenTelemetry naming style (e.g., `foo.bar`).
     *   **Forbidden:** Do NOT use the Prometheus naming style (e.g., `<app>_foo_bar_total`).
     *   **Context:** Rely on attributes and the metric type to provide context.
+*   **Instrumentation Scope:** Tracers and Meters MUST be named using the fully qualified library name (e.g., `github.com/org/repo/pkg/service`).
 
 ## 3. Semantic Conventions
 *   **Attributes:** All attributes (tags) on spans and metrics MUST follow [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/).
