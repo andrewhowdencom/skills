@@ -43,8 +43,8 @@ func DoSomething() (string, error) {
 
 When creating constructors for objects (structs) in Go, prefer the **Functional Options Pattern**. This approach uses variadic arguments to handle optional configuration while keeping the API clean and extensible.
 
-*   **Required Arguments:** Pass required dependencies as explicit, typed arguments to the constructor function (e.g., `NewServer`).
-*   **Optional Arguments:** Use variadic arguments (e.g., `...Option`) for optional configuration.
+*   **Required Arguments:** Pass required dependencies as explicit, typed arguments to the constructor function (e.g., `NewServer`). To avoid stutter, prefer naming the function `New` if the package creates a single object (e.g., `server.New` instead of `server.NewServer`).
+*   **Optional Arguments:** Use variadic arguments (e.g., `...Option`) for optional configuration. Options should return an `error` to allow for validation.
 *   **Defaults:** The struct should be initialized with sane defaults for any optional arguments that are not provided.
 
 ### Example
@@ -53,6 +53,7 @@ When creating constructors for objects (structs) in Go, prefer the **Functional 
 package server
 
 import (
+	"errors"
 	"time"
 )
 
@@ -63,19 +64,23 @@ type Server struct {
 }
 
 // Option defines a functional option for configuring the Server.
-type Option func(*Server)
+type Option func(*Server) error
 
 // WithTimeout sets a custom timeout for the server.
 func WithTimeout(d time.Duration) Option {
-	return func(s *Server) {
+	return func(s *Server) error {
+		if d <= 0 {
+			return errors.New("timeout must be positive")
+		}
 		s.timeout = d
+		return nil
 	}
 }
 
 // New creates a new Server with the given required arguments and options.
 // Required: host, port
 // Optional: timeout (defaults to 30s)
-func New(host string, port int, opts ...Option) *Server {
+func New(host string, port int, opts ...Option) (*Server, error) {
 	s := &Server{
 		host:    host,
 		port:    port,
@@ -83,9 +88,11 @@ func New(host string, port int, opts ...Option) *Server {
 	}
 
 	for _, opt := range opts {
-		opt(s)
+		if err := opt(s); err != nil {
+			return nil, err
+		}
 	}
 
-	return s
+	return s, nil
 }
 ```
