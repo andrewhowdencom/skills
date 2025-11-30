@@ -38,3 +38,54 @@ func DoSomething() (string, error) {
 	return "", fmt.Errorf("%w: %s", ErrUpstreamFailure, fmt.Errorf("upstream error"))
 }
 ```
+
+## Object Construction
+
+When creating constructors for objects (structs) in Go, prefer the **Functional Options Pattern**. This approach uses variadic arguments to handle optional configuration while keeping the API clean and extensible.
+
+*   **Required Arguments:** Pass required dependencies as explicit, typed arguments to the constructor function (e.g., `NewServer`).
+*   **Optional Arguments:** Use variadic arguments (e.g., `...Option`) for optional configuration.
+*   **Defaults:** The struct should be initialized with sane defaults for any optional arguments that are not provided.
+
+### Example
+
+```go
+package server
+
+import (
+	"time"
+)
+
+type Server struct {
+	host    string
+	port    int
+	timeout time.Duration
+}
+
+// Option defines a functional option for configuring the Server.
+type Option func(*Server)
+
+// WithTimeout sets a custom timeout for the server.
+func WithTimeout(d time.Duration) Option {
+	return func(s *Server) {
+		s.timeout = d
+	}
+}
+
+// New creates a new Server with the given required arguments and options.
+// Required: host, port
+// Optional: timeout (defaults to 30s)
+func New(host string, port int, opts ...Option) *Server {
+	s := &Server{
+		host:    host,
+		port:    port,
+		timeout: 30 * time.Second, // Sane default
+	}
+
+	for _, opt := range opts {
+		opt(s)
+	}
+
+	return s
+}
+```
