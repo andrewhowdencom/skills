@@ -97,7 +97,7 @@ if err != nil {
 
 When making remote procedure calls (RPCs), you should mark your spans with the appropriate `SpanKind` (Client or Server) and use standard semantic attributes.
 
-> **Note:** Where possible, prefer using helper functions from semantic convention libraries (e.g., `httpconv` for HTTP) to automatically determine attributes from existing objects.
+> **Note:** Where possible, prefer using helper functions from semantic convention libraries (e.g., `httpconv` for HTTP) to automatically determine attributes from existing objects. Always use the most recent version of semantic conventions (currently `v1.37.0`).
 
 ### gRPC Services
 
@@ -227,7 +227,7 @@ traceProvider := sdktrace.NewTracerProvider(
 
 ## How to Use Semantic Conventions
 
-Use the `semconv` package to ensure you are using standard attribute names.
+Use the `semconv` package to ensure you are using standard attribute names. Always use the most recent version of the semantic conventions (currently `v1.37.0`).
 
 ```go
 import (
