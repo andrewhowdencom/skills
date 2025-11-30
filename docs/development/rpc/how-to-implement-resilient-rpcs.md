@@ -1,10 +1,10 @@
 # How to Implement Resilient RPCs
 
-This guide provides step-by-step instructions on implementing timeouts and retries with exponential backoff and jitter in Go to make your RPCs more resilient to transient failures. These principles apply to various RPC technologies, including gRPC and RESTful APIs.
+This guide provides step-by-step instructions on implementing timeouts and retries with exponential backoff and jitter in Go to make your RPCs more resilient to transient failures. These principles apply to various RPC technologies, including gRPC and RESTful APIs (see [How to Design RPC Interfaces](./how-to-design-rpc-interfaces.md)).
 
 ## Timeouts and Deadlines
 
-The most critical step towards resilience is to set a deadline on every outgoing request. This prevents your service from blocking indefinitely and causing cascading failures. In Go, this is typically achieved using the `context` package.
+The most critical step towards resilience is to set a deadline on every outgoing request. This prevents your service from blocking indefinitely and causing cascading failures. In Go, this is typically achieved using the `context` package. See [Reference: Default Timeouts for RPCs](./reference-default-timeouts.md) for recommended values.
 
 ## Retries with Exponential Backoff and Jitter
 

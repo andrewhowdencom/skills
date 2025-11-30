@@ -1,18 +1,18 @@
 # How to Write Go Code
 
 ## General Advice
-For writing Go code, ensure that you follow out the best practices described by the [effective go] documentation,
-and prefer convententions from the standard library wherever possible.
+For writing Go code, ensure that you follow the best practices described by the [effective go] documentation,
+and prefer conventions from the standard library wherever possible.
 
 Where I want to release an application to GitHub, prefer to use the [open source goreleaser] to run these releases.
-Do a cross compilation build, and upload binaries suitable for the common platforms.
+Do a cross compilation build, and upload binaries suitable for the common platforms. This should typically be done via [GitHub Actions](../ci/how-to-use-github-actions.md).
 
 [effective go]: https://go.dev/doc/effective_go
 [the open source goreleaser]: https://goreleaser.com/
 
 ## Error Handling
 
-For packages that are reused in the application (e.g. anything in `internal`), it is better to "wrap" errors that
+For packages that are reused in the application (e.g. anything in `internal` which usually follows [Hexagonal Architecture](../architecture/explanation-hexagonal-architecture.md)), it is better to "wrap" errors that
 are returned upstream so that unit tests, and if necessary, business logic, can examine them. For example,
 instead of code that does:
 
@@ -41,7 +41,7 @@ func DoSomething() (string, error) {
 
 ## Object Construction
 
-When creating constructors for objects (structs) in Go, prefer the **Functional Options Pattern**. This approach uses variadic arguments to handle optional configuration while keeping the API clean and extensible.
+When creating constructors for objects (structs) in Go, prefer the **Functional Options Pattern** as recommended in [How to Manage Dependencies](../architecture/how-to-manage-dependencies.md). This approach uses variadic arguments to handle optional configuration while keeping the API clean and extensible.
 
 *   **Required Arguments:** Pass required dependencies as explicit, typed arguments to the constructor function (e.g., `NewServer`). To avoid stutter, prefer naming the function `New` if the package creates a single object (e.g., `server.New` instead of `server.NewServer`).
 *   **Optional Arguments:** Use variadic arguments (e.g., `...Option`) for optional configuration. Options should return an `error` to allow for validation.

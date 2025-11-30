@@ -7,3 +7,5 @@ announcements might have the structure:
 ```bash
 ./announce slack post --channel "#foo"
 ```
+
+Once designed, ensure the CLI is well documented. See [How to Document a CLI](./how-to-document-a-cli.md).

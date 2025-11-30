@@ -55,7 +55,7 @@ doing so is:
 ```
 
 Co-authored-by: NAME <NAME@EXAMPLE.COM>
-Co-authored-by: ANOTHER-NAME <ANOTHER-NAME@EXAMPLE.COM>"
+Co-authored-by: ANOTHER-NAME <ANOTHER-NAME@EXAMPLE.COM>
 ```
 
 Complete with the line break before the "Co-authored-by" key/value pair. The format follows RFC 5322 for defining the

@@ -6,6 +6,6 @@ file called README.md for instructions on the installation of any tools.
 Common tools include things like:
 
 * git
-* [task]
+* [task] (see [How to Use Taskfile](../task-runner/how-to-use-taskfile.md))
 
 [task]: https://taskfile.dev/docs/installation
