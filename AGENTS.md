@@ -4,6 +4,17 @@ This document provides conditional instructions for agents. Based on the task at
 
 Please be sure to plan so you consume files at the time they're relevant to complete the task (e.g. git just before interacting with the git tool)
 
+## Documentation Structure & Context
+
+The documentation in this repository is located in `/docs/development/` and follows the [Divio documentation system](https://documentation.divio.com/). It is structured into four types:
+
+*   **Tutorials:** Learning-oriented lessons (e.g., "Tutorial: Test-Driven Development").
+*   **How-to Guides:** Problem-oriented steps (e.g., "How to Design RPC Interfaces").
+*   **Reference:** Information-oriented technical descriptions (e.g., "Reference: Default Timeouts for RPCs").
+*   **Explanation:** Understanding-oriented background knowledge (e.g., "Explanation: Hexagonal Architecture").
+
+Files are organized into directories by topic (e.g., `rpc/`, `git/`, `architecture/`). When you are directed to a specific file, **you should also look at other files in the same directory** to gain broader context. Often, related concepts, references, or alternative approaches are documented nearby.
+
 ## Conditional Instructions
 
 *   **If your task involves making architectural decisions...**
