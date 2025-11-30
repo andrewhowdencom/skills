@@ -10,6 +10,12 @@ Do a cross compilation build, and upload binaries suitable for the common platfo
 [effective go]: https://go.dev/doc/effective_go
 [the open source goreleaser]: https://goreleaser.com/
 
+## Reusable Libraries
+
+We maintain a collection of reusable libraries in `andrewhowdencom/stdlib`. Before implementing common functionality, check the [Standard Library Index](reference-stdlib-index.md) to see if a solution already exists.
+
+If you are developing a library that is intended to be used across multiple applications, it should be placed in `andrewhowdencom/stdlib` and added to the index.
+
 ## Error Handling
 
 For packages that are reused in the application (e.g. anything in `internal` which usually follows [Hexagonal Architecture](../architecture/explanation-hexagonal-architecture.md)), it is better to "wrap" errors that
