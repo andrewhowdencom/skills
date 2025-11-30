@@ -110,7 +110,7 @@ import (
 	"context"
 
 	"go.opentelemetry.io/otel/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func (c *Client) CallRPC(ctx context.Context) error {
@@ -167,7 +167,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/trace"
-	"go.opentelemetry.io/otel/semconv/v1.20.0/httpconv"
+	"go.opentelemetry.io/otel/semconv/v1.37.0/httpconv"
 )
 
 func (c *Client) CallHTTP(req *http.Request) error {
@@ -193,7 +193,7 @@ import (
     "go.opentelemetry.io/otel"
     "go.opentelemetry.io/otel/trace"
     "go.opentelemetry.io/otel/propagation"
-    "go.opentelemetry.io/otel/semconv/v1.20.0/httpconv"
+    "go.opentelemetry.io/otel/semconv/v1.37.0/httpconv"
 )
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -232,7 +232,7 @@ Use the `semconv` package to ensure you are using standard attribute names.
 ```go
 import (
     "go.opentelemetry.io/otel/attribute"
-    semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+    semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 // ...
