@@ -9,7 +9,7 @@ These principles apply to various RPC technologies, including gRPC and RESTful A
 argument.
 
 This allows the application to:
-1.  Propagate cancellation signals (e.g., when a client disconnects or a timeout occurs).
+1.  Propagate cancellation signals (e.g., when a client disconnects or a timeout occurs). See [How to Implement Resilient RPCs](./how-to-implement-resilient-rpcs.md) for more on timeouts.
 2.  Pass request-scoped values (e.g., authentication tokens, trace IDs).
 
 ### Example (Go)
@@ -31,7 +31,7 @@ func (s *Server) GetUser(req *pb.GetUserRequest) (*pb.GetUserResponse, error) {
 **Rule:** If the application includes OpenTelemetry as a dependency, all RPCs MUST be instrumented with distributed tracing.
 
 This ensures that the execution of the RPC can be tracked and visualized in a distributed tracing system (e.g., Jaeger,
-Zipkin, Honeycomb).
+Zipkin, Honeycomb). For detailed instructions, see [How to Instrument Code](../instrumentation/how-to-instrument-code.md) and [Explanation: Observability Strategy](../instrumentation/explanation-observability-strategy.md).
 
 ### Implementation
 
