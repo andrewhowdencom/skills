@@ -9,3 +9,7 @@ andrewhowdencom/announce:
 andrewhowdencom/ruf:
   - AGENTS.md
   - docs/development
+
+andrewhowdencom/stdlib:
+  - AGENTS.md
+  - docs/development 
