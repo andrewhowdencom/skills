@@ -6,7 +6,8 @@ on:
       - main # Or your default branch
     paths:
       - 'AGENTS.md' # Only run when this file changes
-      - 'docs/*'
+      - 'docs/**'
+      - '.github/sync.yml'
 
 jobs:
   sync:
@@ -20,4 +21,4 @@ jobs:
         with:
           SKIP_PR: true
           GH_PAT: ${{ secrets.WRITE_TOKEN }}
-          CONFIG_FILE: '.github/sync-config.yml'
+          CONFIG_FILE: '.github/sync.yml'
