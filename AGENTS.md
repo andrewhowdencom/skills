@@ -51,5 +51,7 @@ Files are organized into directories by topic (e.g., `rpc/`, `git/`, `architectu
     *   ...read [How to Find Required Tools](./docs/development/tools/how-to-find-required-tools.md).
 *   **If your task involves updating documentation...**
     *   ...read [How to Keep Documentation Up-to-Date](./docs/development/documentation/how-to-keep-documentation-up-to-date.md).
+*   **If your task involves creating or modifying a library for external consumption...**
+    *   ...read [How to Document Libraries](./docs/development/documentation/how-to-document-libraries.md).
 *   **If your task involves instrumentation...**
     *   ...read the guidance in [the instrumentation docs](./docs/development/instrumentation/).
