@@ -28,12 +28,14 @@ Files are organized into directories by topic (e.g., `rpc/`, `git/`, `architectu
 *   **If your task involves configuration...**
     *   ...and it's about how the application consumes configuration, read [How to Consume Configuration](./docs/development/configuration/how-to-consume-configuration.md).
     *   ...and it's about where to store configuration files, read [How to Store Configuration Files](./docs/development/configuration/how-to-store-configuration-files.md).
+*   **If you are about to commit changes...**
+    *   ...read [How to Validate Changes](./docs/development/git/how-to-validate-changes.md).
 *   **If your task involves using Git...**
     *   ...and it's about staging changes, read [How to Stage Changes](./docs/development/git/how-to-stage-changes.md).
     *   ...and it's about amending commits, read [How to Amend Commits](./docs/development/git/how-to-amend-commits.md).
     *   ...and it's about writing commit messages, read [How to Write Commit Messages](./docs/development/git/how-to-write-commit-messages.md).
 *   **If your task involves running common development tasks...**
-    *   ...read [How to Use Taskfile](./docs/development/task-runner/how-to-use-taskfile.md).
+    *   ...read [How to Configure Task Runners](./docs/development/task-runner/how-to-configure-task-runners.md).
 *   **If your task involves RPCs...**
     *   ...and it's about designing RPC interfaces, read [How to Design RPC Interfaces](./docs/development/rpc/how-to-design-rpc-interfaces.md).
     *   ...and it's about implementing resilient RPCs, read [How to Implement Resilient RPCs](./docs/development/rpc/how-to-implement-resilient-rpcs.md).
