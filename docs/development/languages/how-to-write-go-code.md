@@ -16,6 +16,14 @@ We maintain a collection of reusable libraries in `andrewhowdencom/stdlib`. Befo
 
 If you are developing a library that is intended to be used across multiple applications, it should be placed in `andrewhowdencom/stdlib` and added to the index.
 
+### Testable Examples
+
+For Go libraries, examples in documentation should be **Testable Examples**. These are snippets of Go code that are compiled and run as part of the package's test suite (in `_test.go` files, functions starting with `Example`).
+
+*   Write `Example` functions to demonstrate how to use the package's API.
+*   These examples appear in the GoDoc automatically.
+*   Reference or include these examples in your `README.md` to ensure that the documentation stays in sync with the code and is verified by tests.
+
 ## Error Handling
 
 For packages that are reused in the application (e.g. anything in `internal` which usually follows [Hexagonal Architecture](../architecture/explanation-hexagonal-architecture.md)), it is better to "wrap" errors that
