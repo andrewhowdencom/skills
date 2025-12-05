@@ -13,3 +13,7 @@ andrewhowdencom/ruf:
 andrewhowdencom/stdlib:
   - AGENTS.md
   - docs/development 
+
+andrewhowdencom/vector:
+  - AGENTS.md
+  - docs/development
