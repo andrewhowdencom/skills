@@ -17,3 +17,7 @@ andrewhowdencom/stdlib:
 andrewhowdencom/vector:
   - AGENTS.md
   - docs/development
+
+andrewhowdencom/otlp.network:
+  - AGENTS.md
+  - docs/development
