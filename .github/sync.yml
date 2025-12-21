@@ -1,29 +1,29 @@
 andrewhowdencom/interviewer:
   - AGENTS.md
   - docs/development
-  - Gemini.md
+  - GEMINI.md
 
 andrewhowdencom/announce:
   - AGENTS.md
   - docs/development
-  - Gemini.md
+  - GEMINI.md
 
 andrewhowdencom/ruf:
   - AGENTS.md
   - docs/development
-  - Gemini.md
+  - GEMINI.md
 
 andrewhowdencom/stdlib:
   - AGENTS.md
   - docs/development
-  - Gemini.md
+  - GEMINI.md
 
 andrewhowdencom/vector:
   - AGENTS.md
   - docs/development
-  - Gemini.md
+  - GEMINI.md
 
 andrewhowdencom/otlp.network:
   - AGENTS.md
   - docs/development
-  - Gemini.md
+  - GEMINI.md
