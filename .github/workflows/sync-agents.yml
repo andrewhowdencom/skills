@@ -6,6 +6,7 @@ on:
       - main # Or your default branch
     paths:
       - 'AGENTS.md' # Only run when this file changes
+      - 'Gemini.md'
       - 'docs/**'
       - '.github/sync.yml'
 
