@@ -1,42 +1,76 @@
 # Project Template
 
-This repository is a template for new software projects, designed to guide AI software engineers (agents) through a
-structured, documentation-driven development process.
+This repository is a template for new software projects, designed to guide AI software engineers (agents) through a structured, documentation-driven development process.
 
-## AGENTS.md
+## Skills
 
-The `AGENTS.md` file serves as the "README for AI Agents". Just as `README.md` communicates important context to human
-developers, `AGENTS.md` provides context, conventions, and instructions specifically for AI coding agents.
+This project uses [Agent Skills](https://agentskills.io) to provide context and instructions to AI agents.
+All skills are located in the [`skills/`](./skills/) directory.
 
-In this project, it acts as a conditional router, directing agents to detailed documentation in the
-`/docs/development/` directory based on the specific task they are performing. This ensures agents adhere to the
-project's established conventions and best practices.
+Each skill contains a `SKILL.md` file with specific instructions and references to detailed documentation.
 
-### Usage with Agents
+- [architecture](./skills/architecture/SKILL.md)
+- [ci](./skills/ci/SKILL.md)
+- [cli](./skills/cli/SKILL.md)
+- [configuration](./skills/configuration/SKILL.md)
+- [dependency-injection](./skills/dependency_injection/SKILL.md)
+- [documentation](./skills/documentation/SKILL.md)
+- [git](./skills/git/SKILL.md)
+- [instrumentation](./skills/instrumentation/SKILL.md)
+- [languages](./skills/languages/SKILL.md)
+- [rpc](./skills/rpc/SKILL.md)
+- [task_runner](./skills/task_runner/SKILL.md)
+- [tests](./skills/tests/SKILL.md)
+- [tools](./skills/tools/SKILL.md)
 
-Most modern AI coding tools will automatically detect and consume `AGENTS.md` if it exists in the root of the
-repository.
+## Installation
 
-*   **Jules:** Automatically reads `AGENTS.md` to understand project-specific constraints and commands.
-*   **Cursor:** Indexes `AGENTS.md` to improve code generation and chat responses.
-*   **Aider:** Can be configured to read `AGENTS.md` for context.
-*   **GitHub Copilot:** Uses `AGENTS.md` (or similar instruction files) to tailor suggestions.
+Skills can be installed globally for use across all projects, or maintained locally for project-specific needs.
 
-### Learn More
+### Global Installation (Recommended for Defaults)
+To make these skills available to Antigravity globally:
 
-*   To understand the specific instructions for *this* project, simply read the [AGENTS.md](./AGENTS.md) file.
-*   To learn more about the `AGENTS.md` standard and its adoption across the industry, visit
-    [agents.md](https://agents.md).
+```bash
+# Create global skills directory
+mkdir -p ~/.antigravity/skills
 
-## Documentation
+# Install all skills
+cp -r skills/* ~/.antigravity/skills/
+```
 
-The documentation in `/docs/development/` is structured according to the [Divio documentation
-system](https://documentation.divio.com/), which categorizes content into four types:
+### Single Skill Installation
+To install a specific skill (e.g., just `git` conventions):
 
-*   **Tutorials:** Learning-oriented guides to help the agent get started.
-*   **How-to guides:** Goal-oriented steps to solve specific problems.
-*   **Reference:** Technical descriptions of the machinery and how to operate it.
-*   **Explanation:** Understanding-oriented discussions of concepts and background.
+```bash
+cp -r skills/git ~/.antigravity/skills/
+```
 
-This structure provides a clear and comprehensive resource for the agent, enabling it to work efficiently and
-effectively.
+## Usage & Colocation
+
+Antigravity and other agents check for skills relative to the **Active Workspace Root** (the folder you have opened).
+
+### Resolution Order
+
+1.  **Workspace Local**: `./skills/`
+    *   *Location*: Directly inside your open project folder.
+    *   *Use Case*: Project-specific conventions, overrides, and version-controlled skills.
+2.  **User Global**: `~/.antigravity/skills/`
+    *   *Location*: User's home directory.
+    *   *Use Case*: Personal defaults and shared tools across all projects.
+
+### Working with Git Worktrees
+
+If you use **Git Worktrees**, specific behaviors apply:
+
+*   **Committed Skills**: If `skills/` is committed to your repository, it will be present in every worktree directory. Opening any worktree folder will correctly load the skills for that branch.
+*   **Shared/Untracked Skills**: If you prefer to manage skills *independently* of the git history (e.g., sharing one `skills/` folder across multiple worktrees without committing it), you can:
+    1.  Place `skills/` in the parent directory of your worktrees.
+    2.  **Symlink** it into your active worktree: `ln -s ../skills ./skills`.
+
+
+### Overriding a Skill
+To override a global skill for a specific project (e.g., a specific `ci` workflow):
+1.  Create a `skills/ci` directory in your project root.
+2.  Add your custom `SKILL.md`.
+3.  The agent will use the local `skills/ci` instead of the global one.
+
