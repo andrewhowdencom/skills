@@ -1,5 +1,4 @@
 # Context
 
-@AGENTS.md
-
-Please refer to the documentation in `docs/development/` as referenced in the instructions above.
+Please refer to the `skills/` directory for project context and instructions.
+Start by listing the files in `skills/` to understand available capabilities.
