@@ -29,5 +29,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         namespace: ${{ env.NAMESPACE }}
+        repository: ${{ github.event.repository.name }} # Creates: ghcr.io/owner/repo.skill
         base: ${{ github.event.before }}
         path: ./skills
