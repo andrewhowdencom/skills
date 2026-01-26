@@ -1,4 +1,7 @@
 # Context
 
-Please refer to the `skills/` directory for project context and instructions.
-Start by listing the files in `skills/` to understand available capabilities.
+This project uses **Agent Skills** to organize instructions.
+
+Please refer to the `skills/` directory.
+- **Start by reading** the `SKILL.md` of any relevant skill (e.g., `skills/go/SKILL.md` for Go tasks).
+- These files contain your **Inlined Expertise** and primary instructions.

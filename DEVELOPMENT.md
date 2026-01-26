@@ -2,21 +2,34 @@
 
 This repository serves as a template for new projects. Developing in this repository primarily involves updating the **skills** that agents follow.
 
-## Structure
+## Skill Structure
 
-The configuration is organized into "Skills" in the `skills/` directory, following the [Agent Skills](https://agentskills.io) standard.
+The configuration is organized into "Skills" in the `skills/` directory, strict following the [Agent Skills](https://agentskills.io) standard.
 
-*   `skills/<name>/SKILL.md`: The primary entry point for the skill, containing instructions and context.
-*   `skills/<name>/references/`: Detailed documentation, templates, and reference material for the skill.
+### Directory Layout
+```
+skills/<name>/
+├── SKILL.md       # Entry point + Inlined Expertise (SOPs)
+├── references/    # Detailed docs, templates, deep-dives
+├── scripts/       # Optional automation tools
+└── assets/        # Static files
+```
 
-## Making Changes
+### Philosophy: Inlined Expertise
+When creating or editing skills, follow the **Inlined Expertise** philosophy:
+- **SKILL.md** is NOT just an index. It MUST contain the most frequent "Standard Operating Procedures" (SOPs).
+- **Do not** bury critical instructions in `references/`.
+- **Do** use `references/` for explanations, history, or large templates.
 
-1.  **Identify the skill:** Determine which skill your change relates to (e.g., `git`, `architecture`).
-2.  **Locate the file:** Find the `SKILL.md` or a file in `references/` within that skill's directory.
-3.  **Edit:** Make your changes using Markdown.
-4.  **Create new skills:** If the topic doesn't exist, create a new directory in `skills/` with a `SKILL.md` file.
+**Example of Inlined Expertise (in SKILL.md):**
+> "Run `go test -race ./...` to verify changes." (Direct instruction)
 
-## Guidelines
+**Example of Reference:**
+> "See `references/testing_philosophy.md` for why we use Table-Driven tests." (Deep dive)
 
-*   Keep instructions in `SKILL.md` clear and concise.
-*   Use standard Markdown formatting.
+## Workflow
+
+1.  **Identify the skill:** Determine the scope (e.g., `git`, `go`).
+2.  **Edit `SKILL.md`:** Add actionable instructions directly.
+3.  **Add References:** Create files in `references/` only if complexity demands it.
+4.  **Validate:** Ensure markdown renders correctly and links work.

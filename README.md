@@ -1,76 +1,54 @@
-# Project Template
+# Agent Skills Library
 
-This repository is a template for new software projects, designed to guide AI software engineers (agents) through a structured, documentation-driven development process.
+This repository contains a collection of **Agent Skills** designed to guide AI software engineers (agents) through a structured, documentation-driven development process.
 
-## Skills
+## Using These Skills
 
-This project uses [Agent Skills](https://agentskills.io) to provide context and instructions to AI agents.
-All skills are located in the [`skills/`](./skills/) directory.
+You can use the `skr` CLI to install these skills into your own projects.
 
-Each skill contains a `SKILL.md` file with specific instructions and references to detailed documentation.
-
-- [architecture](./skills/architecture/SKILL.md)
-- [ci](./skills/ci/SKILL.md)
-- [cli](./skills/cli/SKILL.md)
-- [configuration](./skills/configuration/SKILL.md)
-- [dependency-injection](./skills/dependency_injection/SKILL.md)
-- [documentation](./skills/documentation/SKILL.md)
-- [git](./skills/git/SKILL.md)
-- [instrumentation](./skills/instrumentation/SKILL.md)
-- [languages](./skills/languages/SKILL.md)
-- [rpc](./skills/rpc/SKILL.md)
-- [task_runner](./skills/task_runner/SKILL.md)
-- [tests](./skills/tests/SKILL.md)
-- [tools](./skills/tools/SKILL.md)
-
-## Installation
-
-Skills can be installed globally for use across all projects, or maintained locally for project-specific needs.
-
-### Global Installation (Recommended for Defaults)
-To make these skills available to Antigravity globally:
+### 1. Install from Registry (Recommended)
+These skills are automatically published to GitHub Container Registry.
 
 ```bash
-# Create global skills directory
-mkdir -p ~/.antigravity/skills
+# General syntax
+skr install ghcr.io/andrewhowdencom/<skill>
 
-# Install all skills
-cp -r skills/* ~/.antigravity/skills/
+# Examples:
+skr install ghcr.io/andrewhowdencom/git:latest
+skr install ghcr.io/andrewhowdencom/go:latest
+skr install ghcr.io/andrewhowdencom/ci:latest
 ```
 
-### Single Skill Installation
-To install a specific skill (e.g., just `git` conventions):
+### 2. Install from Source
+If you are modifying these skills or working offline:
 
 ```bash
-cp -r skills/git ~/.antigravity/skills/
+# 1. Build the skill locally
+cd skills/go
+skr build . --tag go:local
+
+# 2. Install into your project
+cd /path/to/your/project
+skr install go:local
 ```
 
-## Usage & Colocation
+## Available Skills
 
-Antigravity and other agents check for skills relative to the **Active Workspace Root** (the folder you have opened).
+| Skill | Description | Registry Ref |
+| :--- | :--- | :--- |
+| **[architecture](./skills/architecture/SKILL.md)** | System design patterns | `ghcr.io/andrewhowdencom/architecture` |
+| **[ci](./skills/ci/SKILL.md)** | CI/CD pipelines | `ghcr.io/andrewhowdencom/ci` |
+| **[cli](./skills/cli/SKILL.md)** | CLI development | `ghcr.io/andrewhowdencom/cli` |
+| **[configuration](./skills/configuration/SKILL.md)** | Config management | `ghcr.io/andrewhowdencom/configuration` |
+| **[dependency-injection](./skills/dependency_injection/SKILL.md)** | DI patterns | `ghcr.io/andrewhowdencom/dependency-injection` |
+| **[documentation](./skills/documentation/SKILL.md)** | Documentation standards | `ghcr.io/andrewhowdencom/documentation` |
+| **[git](./skills/git/SKILL.md)** | Git workflow & standards | `ghcr.io/andrewhowdencom/git` |
+| **[go](./skills/go/SKILL.md)** | Go language standards | `ghcr.io/andrewhowdencom/go` |
+| **[instrumentation](./skills/instrumentation/SKILL.md)** | Metrics & Tracing | `ghcr.io/andrewhowdencom/instrumentation` |
+| **[rpc](./skills/rpc/SKILL.md)** | RPC/Proto standards | `ghcr.io/andrewhowdencom/rpc` |
+| **[task_runner](./skills/task_runner/SKILL.md)** | Taskfile patterns | `ghcr.io/andrewhowdencom/task_runner` |
+| **[tools](./skills/tools/SKILL.md)** | Tooling configuration | `ghcr.io/andrewhowdencom/tools` |
 
-### Resolution Order
+## Philosophy: Inlined Expertise
 
-1.  **Workspace Local**: `./skills/`
-    *   *Location*: Directly inside your open project folder.
-    *   *Use Case*: Project-specific conventions, overrides, and version-controlled skills.
-2.  **User Global**: `~/.antigravity/skills/`
-    *   *Location*: User's home directory.
-    *   *Use Case*: Personal defaults and shared tools across all projects.
-
-### Working with Git Worktrees
-
-If you use **Git Worktrees**, specific behaviors apply:
-
-*   **Committed Skills**: If `skills/` is committed to your repository, it will be present in every worktree directory. Opening any worktree folder will correctly load the skills for that branch.
-*   **Shared/Untracked Skills**: If you prefer to manage skills *independently* of the git history (e.g., sharing one `skills/` folder across multiple worktrees without committing it), you can:
-    1.  Place `skills/` in the parent directory of your worktrees.
-    2.  **Symlink** it into your active worktree: `ln -s ../skills ./skills`.
-
-
-### Overriding a Skill
-To override a global skill for a specific project (e.g., a specific `ci` workflow):
-1.  Create a `skills/ci` directory in your project root.
-2.  Add your custom `SKILL.md`.
-3.  The agent will use the local `skills/ci` instead of the global one.
-
+All skills in this repository follow the **Inlined Expertise** philosophy. The `SKILL.md` file contains the most critical, actionable "Standard Operating Procedures" (SOPs) directly, reducing the need for agents to fetch external references for common tasks.
