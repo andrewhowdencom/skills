@@ -31,3 +31,4 @@ defer cancel()
 Use exponential backoff with jitter for transient failures.
 - **gRPC**: Use `grpc_retry` middleware.
 - **HTTP**: Use `go-retryablehttp`.
+
