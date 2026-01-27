@@ -70,6 +70,17 @@ if err := dest.Do(); err != nil {
 }
 ```
 
+### 4. Logging
+Use `log/slog` with `TextHandler`.
+- **Debug**: Detailed info for development.
+- **Lifecycle**: Startup/shutdown events.
+- **Forbidden**: Do NOT use logs for access tracking (use Tracing).
+
+```go
+logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+slog.Info("starting application", "version", version)
+```
+
 ## Tooling
 - **Linting**: use `golangci-lint`.
 - **Testing**: always use `go test -race ./...`.
