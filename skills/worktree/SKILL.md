@@ -1,5 +1,5 @@
 ---
-name: Worktree
+name: worktree
 description: Standard Operating Procedures for managing git worktrees to isolate tasks.
 ---
 
