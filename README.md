@@ -46,7 +46,7 @@ skr install go:local
 | **[go](./skills/go/SKILL.md)** | Go language standards | `ghcr.io/andrewhowdencom/go` |
 | **[instrumentation](./skills/instrumentation/SKILL.md)** | Metrics & Tracing | `ghcr.io/andrewhowdencom/instrumentation` |
 | **[rpc](./skills/rpc/SKILL.md)** | RPC/Proto standards | `ghcr.io/andrewhowdencom/rpc` |
-| **[task_runner](./skills/task_runner/SKILL.md)** | Taskfile patterns | `ghcr.io/andrewhowdencom/task_runner` |
+| **[taskfile](./skills/taskfile/SKILL.md)** | Taskfile patterns | `ghcr.io/andrewhowdencom/taskfile` |
 | **[tools](./skills/tools/SKILL.md)** | Tooling configuration | `ghcr.io/andrewhowdencom/tools` |
 
 ## Philosophy: Inlined Expertise

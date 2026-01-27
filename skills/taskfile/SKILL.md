@@ -1,5 +1,5 @@
 ---
-name: task_runner
+name: taskfile
 description: Guidelines for standard tasks in Taskfile.yml.
 ---
 
