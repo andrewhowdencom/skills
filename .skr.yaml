@@ -1,3 +1,6 @@
 agents: []
 skills:
     - ghcr.io/andrewhowdencom/skills.git:latest
+    - ghcr.io/andrewhowdencom/skr.skill
+    - ghcr.io/andrewhowdencom/skr.skill:latest
+    - ghcr.io/andrewhowdencom/skr.builder:latest
