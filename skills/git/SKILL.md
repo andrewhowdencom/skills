@@ -58,3 +58,5 @@ If pair programming or crediting others, add co-authors at the end of the body:
 ```
 Co-authored-by: NAME <NAME@EXAMPLE.COM>
 ```
+
+Coding agents (e.g. Gemini, Claude, Antigravity) are all pair-programmers, and should ensure their own emails are added in "Co-Authored-By".
