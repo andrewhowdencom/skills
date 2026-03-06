@@ -39,7 +39,7 @@ Commit messages should follow the standard format:
 Maximally 72 characters, descriptive, using imperative mood (e.g., "Deploy changes automatically" not "Deployed changes").
 
 #### Body
-Explain **why** the change was made (justification), not just **what** changed. Use headers for structured context if applicable:
+Maximally 72 characters, Explain **why** the change was made (justification), not just **what** changed. Use headers for structured context if applicable:
 
 ```
 Design:
