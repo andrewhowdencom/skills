@@ -5,6 +5,20 @@ description: Guidelines for consuming and storing configuration.
 
 # Configuration
 
+## Name configuration
+
+Configuration should, as a rule, nest objects rather than use underscores. For example, given the configuration that sets where "state" is stored, it should be something like:
+
+```yaml
+state:
+  redis:
+    address: "..."
+    password: "..."
+    database: "..."
+```
+
+Try and avoid underscores (e.g. use "redis.address" and not "redis_address")
+
 ## Consume Configuration
 Configuration parameters should be accessible via:
 1.  **Command Line Flag**: Use dot notation to match file structure (e.g., `--slack.api.key="abcde"`).
